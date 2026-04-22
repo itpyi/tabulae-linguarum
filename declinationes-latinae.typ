@@ -5,7 +5,7 @@
 
 #set page(
   paper: "a4",
-  header: [TABVLA DECLINATIONIS #h(1fr) #text(font:"KingHwa_OldSong")[拉丁语名词变格表]],
+  header: [TABVLA DECLINATIONVM #h(1fr) #text(font:"KingHwa_OldSong")[拉丁语名词变格表]],
   margin: (
     top: 5em,
     bottom: 4.5em,
