@@ -89,35 +89,35 @@
 
 // ===================================== //
 
-#let aqua = ([aqua, -ae, F. 水],
+#let aqua = ([aqua, -ae, #smallcaps[f]. 水],
   [aqu#end[a]], [aqu#end[ae]],
   [aqu#end[ae]],[aqu#end[ārum]],
   [aqu#end[ae]],[aqu#end[īs]],
   [aqu#end[am]],[aqu#end[ās]],
   [aqu#end[ā]], [aqu#end[īs]])
 
-#let servus = ([servus, -ī, M. 奴隶],
+#let servus = ([servus, -ī, #smallcaps[m]. 奴隶],
   [serv#end[us]], [serv#end[ī]],
   [serv#end[ī]],[serv#end[ōrum]],
   [serv#end[ō]],[serv#end[īs]],
   [serv#end[um]],[serv#end[ōs]],
   [serv#end[ō]], [serv#end[īs]])
 
-#let donum = ([dōnum, -ī, N. 礼物],
+#let donum = ([dōnum, -ī, #smallcaps[n]. 礼物],
   [dōn#end[um]],[dōn#end[a]],
   [dōn#end[ī]], [dōn#end[ōrum]],
   [dōn#end[ō]], [dōn#end[īs]],
   [dōn#end[um]],[dōn#end[a]],
   [dōn#end[ō]], [dōn#end[īs]])
 
-#let rex = ([rēx, rēgis, M. 国王],
+#let rex = ([rēx, rēgis, #smallcaps[m]. 国王],
   [rēx],[rēg#end[ēs]],
   [rēg#end[is]], [rēg#end[um]],
   [rēg#end[ī]], [rēg#end[ibus]],
   [rēg#end[em]],[rēg#end[ēs]],
   [rēg#end[e]], [rēg#end[ibus]])
 
-#let corpus = ([corpus, corporis, N. 身体],
+#let corpus = ([corpus, corporis, #smallcaps[n]. 身体],
   [corpus],[corpor#end[a]],
   [corpor#end[is]], [corpor#end[um]],
   [corpor#end[ī]], [corpor#end[ibus]],
@@ -125,28 +125,28 @@
   [corpor#end[e]], [corpor#end[ibus]])
 
 
-#let civis = ([cīvis, -is, M. 公民],
+#let civis = ([cīvis, -is, #smallcaps[m]. 公民],
   [cīv#end[is]],[cīv#end[ēs]],
   [cīv#end[is]],[cīv#end[ium]],
   [cīv#end[ī]], [cīv#end[ibus]],
   [cīv#end[em]],[cīv#end[ēs]],
   [cīv#end[e]], [cīv#end[ibus]])
 
-#let mare = ([mare, -is, N. 海],
+#let mare = ([mare, -is, #smallcaps[n]. 海],
   [mar#end[e]],[mar#end[ia]],
   [mar#end[is]],[mar#end[ium]],
   [mar#end[ī]], [mar#end[ibus]],
   [mar#end[e]],[mar#end[ia]],
   [mar#end[ī]], [mar#end[ibus]])
 
-#let fructus = ([frūctus, -ūs, M. 水果],
+#let fructus = ([frūctus, -ūs, #smallcaps[m]. 水果],
   [frūct#end[us]],[frūct#end[ūs]],
   [frūct#end[ūs]], [frūct#end[uum]],
   [frūct#end[uī]], [frūct#end[ibus]],
   [frūct#end[um]],[frūct#end[ūs]],
   [frūct#end[ū]], [frūct#end[ibus]])
 
-#let cornu = ([cornū, -ūs, N. 角],
+#let cornu = ([cornū, -ūs, #smallcaps[n]. 角],
   [corn#end[ū]],[corn#end[ua]],
   [corn#end[ūs]], [corn#end[uum]],
   [corn#end[ū]], [corn#end[ibus]],
@@ -154,7 +154,7 @@
   [corn#end[ū]], [corn#end[ibus]])
 
 
-#let res = ([rēs, reī, F. 事物],
+#let res = ([rēs, reī, #smallcaps[f]. 事物],
   [r#end[ēs]],[r#end[ēs]],
   [r#end[eī]],[r#end[ērum]],
   [r#end[eī]],[r#end[ēbus]],
@@ -162,7 +162,7 @@
   [r#end[ē]], [r#end[ēbus]])
 
 
-#let dies = ([diēs, diēī, M. 日子],
+#let dies = ([diēs, diēī, #smallcaps[n]. 日子],
   [di#end[ēs]],[di#end[ēs]],
   [di#end[ēī]],[di#end[ērum]],
   [di#end[ēī]],[di#end[ēbus]],
