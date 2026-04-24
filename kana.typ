@@ -55,9 +55,9 @@
   (hira: "ろ", kata: "ロ", han-hira: "呂", han-kata: "呂", latin: "ro", ipa: "ɾo"),
   // わ行
   (hira: "わ", kata: "ワ", han-hira: "和", han-kata: "和", latin: "wa", ipa: "wa"),
+  (hira: "ゐ", kata: "ヰ", han-hira: "為", han-kata: "井", latin: "wi", ipa: "i", deprecated: true),
   (hira: "", kata: "", han-hira: "", han-kata: "", latin: "", ipa: ""),
-  (hira: "", kata: "", han-hira: "", han-kata: "", latin: "", ipa: ""),
-  (hira: "", kata: "", han-hira: "", han-kata: "", latin: "", ipa: ""),
+  (hira: "ゑ", kata: "ヱ", han-hira: "恵", han-kata: "衛", latin: "we", ipa: "e", deprecated: true),
   (hira: "を", kata: "ヲ", han-hira: "遠", han-kata: "乎", latin: "wo", ipa: "o"),
   // 拨音
   (hira: "ん", kata: "ン", han-hira: "无", han-kata: "尓", latin: "n", ipa: "ɴ"),
@@ -88,11 +88,11 @@
 #let latin-font = "EB Garamond"
 // #let caoshu-font = "???????"
 
-#let cell(kana) = {
+#let pre-cell(kana, light: 150) = {
   if kana.ipa != ""{
-    text(font: latin-font)[#text(fill: luma(100))[/#kana.ipa/] #h(1fr) #kana.latin]
+    text(font: latin-font)[/#kana.ipa/ #h(1fr) #kana.latin]
     v(-0.8em)
-    line(length: 100%, stroke: gray)
+    line(length: 100%, stroke: luma(light))
     v(-0.5em)
     table(
       align: (left + bottom, right),
@@ -103,6 +103,14 @@
       [#text(font: caoshu-font)[#kana.han-hira]#h(0.2em)#kana.han-hira],[#text(size: kana-font-size, weight: "bold", font: kana-font)[#kana.hira]],
       [#h(1.2em) #kana.han-kata],[#text(size: kana-font-size, weight: "bold", font: kana-font)[#kana.kata]],
     )
+  }
+}
+
+#let cell(kana) = {
+  if kana.keys().contains("deprecated"){
+    text(fill: luma(150))[#pre-cell(kana, light: 200)]
+  } else {
+    pre-cell(kana)
   }
 }
 
@@ -127,7 +135,7 @@
   ]
 
 #let foot-cell = [
-  #v(1fr) #vertical-text("公元二零二六年四月廿三日逸飛謹製", han-font)
+  #v(1fr) #vertical-text("公元二零二六年四月廿四日甫微謹製", han-font)
 ]
 
 #let col-line-stroke(x) = {
