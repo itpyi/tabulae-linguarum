@@ -1,82 +1,83 @@
-#let aqua = ([aqua, -ae, #smallcaps[f]. 水],
+#let data-set = (
+  "aqua": ([aqua, -ae, #smallcaps[f]. 水],
   [aqu-a], [aqu-ae],
   [aqu-ae],[aqu-ārum],
   [aqu-ae],[aqu-īs],
   [aqu-am],[aqu-ās],
-  [aqu-ā], [aqu-īs])
+  [aqu-ā], [aqu-īs]),
 
-#let servus = ([servus, -ī, #smallcaps[m]. 奴隶],
+  "servus": ([servus, -ī, #smallcaps[m]. 奴隶],
   [serv-us], [serv-ī],
   [serv-ī],[serv-ōrum],
   [serv-ō],[serv-īs],
   [serv-um],[serv-ōs],
-  [serv-ō], [serv-īs])
+  [serv-ō], [serv-īs]),
 
-#let donum = ([dōnum, -ī, #smallcaps[n]. 礼物],
+  "donum": ([dōnum, -ī, #smallcaps[n]. 礼物],
   [dōn-um],[dōn-a],
   [dōn-ī], [dōn-ōrum],
   [dōn-ō], [dōn-īs],
   [dōn-um],[dōn-a],
-  [dōn-ō], [dōn-īs])
+  [dōn-ō], [dōn-īs]),
 
-#let rex = ([rēx, rēgis, #smallcaps[m]. 国王],
+  "rex": ([rēx, rēgis, #smallcaps[m]. 国王],
   [rēx],[rēg-ēs],
   [rēg-is], [rēg-um],
   [rēg-ī], [rēg-ibus],
   [rēg-em],[rēg-ēs],
-  [rēg-e], [rēg-ibus])
+  [rēg-e], [rēg-ibus]),
 
-#let corpus = ([corpus, corporis, #smallcaps[n]. 身体],
+  "corpus": ([corpus, corporis, #smallcaps[n]. 身体],
   [corpus],[corpor-a],
   [corpor-is], [corpor-um],
   [corpor-ī], [corpor-ibus],
   [corpus],[corpor-a],
-  [corpor-e], [corpor-ibus])
+  [corpor-e], [corpor-ibus]),
 
 
-#let civis = ([cīvis, -is, #smallcaps[m]. 公民],
+  "civis": ([cīvis, -is, #smallcaps[m]. 公民],
   [cīv-is],[cīv-ēs],
   [cīv-is],[cīv-ium],
   [cīv-ī], [cīv-ibus],
   [cīv-em],[cīv-ēs],
-  [cīv-e], [cīv-ibus])
+  [cīv-e], [cīv-ibus]),
 
-#let mare = ([mare, -is, #smallcaps[n]. 海],
+  "mare": ([mare, -is, #smallcaps[n]. 海],
   [mar-e],[mar-ia],
   [mar-is],[mar-ium],
   [mar-ī], [mar-ibus],
   [mar-e],[mar-ia],
-  [mar-ī], [mar-ibus])
+  [mar-ī], [mar-ibus]),
 
-#let fructus = ([frūctus, -ūs, #smallcaps[m]. 水果],
+  "fructus": ([frūctus, -ūs, #smallcaps[m]. 水果],
   [frūct-us],[frūct-ūs],
   [frūct-ūs], [frūct-uum],
   [frūct-uī], [frūct-ibus],
   [frūct-um],[frūct-ūs],
-  [frūct-ū], [frūct-ibus])
+  [frūct-ū], [frūct-ibus]),
 
-#let cornu = ([cornū, -ūs, #smallcaps[n]. 角],
+  "cornu": ([cornū, -ūs, #smallcaps[n]. 角],
   [corn-ū],[corn-ua],
   [corn-ūs], [corn-uum],
   [corn-ū], [corn-ibus],
   [corn-ū],[corn-ua],
-  [corn-ū], [corn-ibus])
+  [corn-ū], [corn-ibus]),
 
-
-#let res = ([rēs, reī, #smallcaps[f]. 事物],
+  "res": ([rēs, reī, #smallcaps[f]. 事物],
   [r-ēs],[r-ēs],
   [r-eī],[r-ērum],
   [r-eī],[r-ēbus],
   [r-em],[r-ēs],
-  [r-ē], [r-ēbus])
+  [r-ē], [r-ēbus]),
 
 
-#let dies = ([diēs, diēī, #smallcaps[n]. 日子],
+  "dies": ([diēs, diēī, #smallcaps[n]. 日子],
   [di-ēs],[di-ēs],
   [di-ēī],[di-ērum],
   [di-ēī],[di-ēbus],
   [di-em],[di-ēs],
   [di-ē], [di-ēbus])
+)
 
 // global setting
 
@@ -199,7 +200,7 @@
   row-gutter: 1em,
   column-gutter: 2em,
   [#declinatio-title(1)
-    #chart(aqua, -1)
+    #chart(data-set.aqua, -1)
   ],
   [
   #declinatio-title(2)
@@ -207,8 +208,8 @@
     align: left,
     columns: (1fr,1fr),
     stroke: 0pt,
-    chart(servus, 1),
-    chart(donum, 0, if-case: false)
+    chart(data-set.servus, 1),
+    chart(data-set.donum, 0, if-case: false)
   )
   ],
   [#declinatio-title(3)
@@ -216,8 +217,8 @@
     align: left,
     columns: (1fr,1fr),
     stroke: 0pt,
-    chart(rex, 1),
-    chart(corpus, 0, if-case: false)
+    chart(data-set.rex, 1),
+    chart(data-set.corpus, 0, if-case: false)
   )
   ],
   [#declinatio-title(3, if-i: true)
@@ -225,8 +226,8 @@
     align: left,
     columns: (1fr,1fr),
     stroke: 0pt,
-    chart(civis, 1),
-    chart(mare, 0, if-case: false)
+    chart(data-set.civis, 1),
+    chart(data-set.mare, 0, if-case: false)
   )
   ],
   [#declinatio-title(4)
@@ -234,8 +235,8 @@
     align: left,
     columns: (1fr,1fr),
     stroke: 0pt,
-    chart(fructus, 1),
-    chart(cornu, 0, if-case: false)
+    chart(data-set.fructus, 1),
+    chart(data-set.cornu, 0, if-case: false)
   )
   ],
   [#declinatio-title(5)
@@ -243,8 +244,8 @@
     align: left,
     columns: (1fr,1fr),
     stroke: 0pt,
-    chart(res, -1),
-    chart(dies, 1, if-case: false)
+    chart(data-set.res, -1),
+    chart(data-set.dies, 1, if-case: false)
   )
   ],
 )
