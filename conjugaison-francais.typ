@@ -1,4 +1,5 @@
-#let aimer = (
+#let data-set = (
+  "aimer": (
   name: "aimer",
   info: "1ER GROUPE",
   note: [],
@@ -15,9 +16,9 @@
   subj-pres: ("aim-e", "aim-es", "aim-e", "aim-ions", "aim-iez", "aim-ent"),
   subj-impf: ("aim-asse", "aim-asses", "aim-ât", "aim-assions", "aim-assiez", "aim-assent"),
   imp:  ("aim-e", "aim-ons", "aim-ez"),
-)
+),
 
-#let finir = (
+  "finir": (
   name: "finir",
   info: "2E GROUPE",
   note: [],
@@ -34,9 +35,9 @@
   subj-pres: ("fin-isse", "fin-isses", "fin-isse", "fin-issions", "fin-issiez", "fin-issent"),
   subj-impf: ("fin-isse", "fin-isses", "fin-ît", "fin-issions", "fin-issiez", "fin-issent"),
   imp:  ("fin-is", "fin-issons", "fin-issez"),
-)
+),
 
-#let aller = (
+  "aller": (
   name: "aller",
   info: "3E GROUPE",
   note: [],
@@ -53,9 +54,9 @@
   subj-pres: ("aill-e", "aill-es", "aill-e", "all-ions", "all-iez", "aill-ent"),
   subj-impf: ("all-asse", "all-asses", "all-ât", "all-assions", "all-assiez", "all-assent"),
   imp:  ("va", "all-ons", "all-ez"),
-)
+),
 
-#let vendre = (
+  "vendre": (
   name: "vendre",
   info: "3E GROUPE",
   note: [],
@@ -72,9 +73,9 @@
   subj-pres: ("vend-e", "vend-es", "vend-e", "vend-ions", "vend-iez", "vend-ent"),
   subj-impf: ("vend-isse", "vend-isses", "vend-ît", "vend-issions", "vend-issiez", "vend-issent"),
   imp:  ("vend-s", "vend-ons", "vend-ez"),
-)
+),
 
-#let vouloir = (
+  "vouloir": (
   name: "vouloir",
   info: "3E GROUPE",
   note: [],
@@ -91,9 +92,9 @@
   subj-pres: ("veuill-e", "veuill-es", "veuill-e", "voul-ions", "voul-iez", "veuill-ent"),
   subj-impf: ("voul-usse", "voul-usses", "voul-ût", "voul-ussions", "voul-ussiez", "voul-ussent"),
   imp:  ("veuill-e", "veuill-ons", "veuill-ez"),
-)
+),
 
-#let avoir = (
+  "avoir": (
   name: "avoir",
   info: "AUXILIAIRE",
   note: [],
@@ -110,9 +111,9 @@
   subj-pres: ("ai-e", "ai-es", "ai-t", "ay-ons", "ay-ez", "ai-ent"),
   subj-impf: ("eu-sse", "eu-sses", "eû-t", "eu-ssions", "eu-ssiez", "eu-ssent"),
   imp:  ("ai-e", "ay-ons", "ay-ez"),
-)
+),
 
-#let etre = (
+  "etre": (
   name: "être",
   info: "AUXILIAIRE",
   note: [],
@@ -129,6 +130,7 @@
   subj-pres: ("soi-s", "soi-s", "soi-t", "soy-ons", "soy-ez", "soi-ent"),
   subj-impf: ("fu-sse", "fu-sses", "fû-t", "fu-ssions", "fu-ssiez", "fu-ssent"),
   imp:  ("soi-s", "soy-ons", "soy-ez"),
+)
 )
 
 // --- 全局设置 ---
@@ -223,8 +225,8 @@
   columns: (1fr, 1fr),
   inset: (x: 1em),
   stroke: none,
-  verb_page(aimer),
-  verb_page(finir)
+  verb_page(data-set.aimer),
+  verb_page(data-set.finir)
 )
 
 #pagebreak()
@@ -233,8 +235,8 @@
   columns: (1fr, 1fr),
   inset: (x: 1em),
   stroke: none,
-  verb_page(vendre),
-  verb_page(vouloir),
+  verb_page(data-set.vendre),
+  verb_page(data-set.vouloir),
 )
 
 #pagebreak()
@@ -243,8 +245,8 @@
   columns: (1fr, 1fr),
   inset: (x: 1em),
   stroke: none,
-  verb_page(aller),
-  // verb_page(vouloir),
+  verb_page(data-set.aller),
+  // verb_page(data-set.vouloir),
 )
 
 #pagebreak()
@@ -253,6 +255,6 @@
   columns: (1fr, 1fr),
   inset: (x: 1em),
   stroke: none,
-  verb_page(etre),
-  verb_page(avoir),
+  verb_page(data-set.etre),
+  verb_page(data-set.avoir),
 )
