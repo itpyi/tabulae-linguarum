@@ -172,7 +172,7 @@
 #let persons-font-size = 0.9em
 
 // --- 变位表格组件 ---
-#let verb_page(verb) = {
+#let verb-table(verb) = {
   block[
     
     // 第一排：非人称形式
@@ -219,42 +219,22 @@
   ]
 }
 
+#let page-gen(verb, if-end: false) = {
+  set align(horizon)
+  table(
+    columns: (1fr, 1fr),
+    inset: (x: 1em),
+    stroke: none,
+    ..verb.map(v => verb-table(v))
+  )
+  if not if-end {pagebreak()}
+}
+
 // --- 渲染渲染 ---
-#set align(horizon)
-#table(
-  columns: (1fr, 1fr),
-  inset: (x: 1em),
-  stroke: none,
-  verb_page(data-set.aimer),
-  verb_page(data-set.finir)
-)
+#page-gen((data-set.aimer, data-set.finir))
 
-#pagebreak()
+#page-gen((data-set.vendre, data-set.vouloir))
 
-#table(
-  columns: (1fr, 1fr),
-  inset: (x: 1em),
-  stroke: none,
-  verb_page(data-set.vendre),
-  verb_page(data-set.vouloir),
-)
+#page-gen((data-set.aller,))
 
-#pagebreak()
-
-#table(
-  columns: (1fr, 1fr),
-  inset: (x: 1em),
-  stroke: none,
-  verb_page(data-set.aller),
-  // verb_page(data-set.vouloir),
-)
-
-#pagebreak()
-
-#table(
-  columns: (1fr, 1fr),
-  inset: (x: 1em),
-  stroke: none,
-  verb_page(data-set.etre),
-  verb_page(data-set.avoir),
-)
+#page-gen((data-set.avoir, data-set.etre), if-end: true)
