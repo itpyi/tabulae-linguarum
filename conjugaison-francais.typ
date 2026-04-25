@@ -175,7 +175,7 @@
     
     // 第一排：非人称形式
     #table(
-      columns: (0.7fr, 1fr, 1fr, 1fr, 1fr),
+      columns: (0.6fr, 1fr, 1fr, 1fr, 1fr),
       align: (x, y) => (
         if x > 0 { left + top }
         else { right + bottom }
@@ -184,13 +184,13 @@
       inset: (y: 0.15em),
       row-gutter: 0.5em,
       table.hline(start: 2, stroke: luma(150)),
-      table.cell(colspan: 2, align: left+top)[#text(size: 1.2em, baseline: 0.0em)[#verb.info]],[#mode-style[infinitive]], [#mode-style[participe]\ #temp-style[présent]], [#mode-style[p.] \ #temp-style[passé]],
+      table.cell(colspan: 2, align: left+top)[#h(-0.5em)#text(size: 1.2em, baseline: -0.4em)[#verb.info]],[#mode-style[infinitive]], [#mode-style[participe]\ #temp-style[présent]], [#mode-style[p.] \ #temp-style[passé]],
       table.cell(colspan: 2, align: left)[#text(size: 0.8em)[#verb.note]],
       [#parse(verb.infinitive)],
       [#parse(verb.par-pres)],
       [#parse(verb.par-passe)],
       [], table.cell(colspan: 4, align: left+ bottom)[],
-      table.hline(start: 1, stroke: luma(150)),
+      table.hline(start: 0, stroke: luma(150)),
       [], [#mode-style[indicatif] #temp-style[présent]], [#mode-style[ind.]\ #temp-style[imparfait]], [#mode-style[ind.]\ #temp-style[passé simple]], [#mode-style[ind.]\ #temp-style[futur simple]],
       ..range(6).map(i => (
         text(fill: luma(150), size: persons-font-size)[#persons.at(i)],
@@ -200,7 +200,7 @@
         parse(verb.indicatif.fut.at(i)),
       )).flatten(),
       [], table.cell(colspan: 4, align: left+ bottom)[],
-      table.hline(start: 1, stroke: luma(150)),
+      table.hline(start: 0, stroke: luma(150)),
       [], [#mode-style[conditionnel]\ #temp-style[présent]], [#mode-style[subjonctif]\ #temp-style[présent]], [#mode-style[subj.]\ #temp-style[imparfait]], [#mode-style[impératif]\ #temp-style[présent]],
       ..range(6).map(i => (
         text(fill: luma(150), size: persons-font-size)[#(if i < 6 {persons.at(i)})],
@@ -221,7 +221,7 @@
 #set align(horizon)
 #table(
   columns: (1fr, 1fr),
-  inset: (x: 0em),
+  inset: (x: 1em),
   stroke: none,
   verb_page(aimer),
   verb_page(finir)
@@ -231,7 +231,7 @@
 
 #table(
   columns: (1fr, 1fr),
-  inset: (x: 0em),
+  inset: (x: 1em),
   stroke: none,
   verb_page(vendre),
   verb_page(vouloir),
@@ -241,7 +241,7 @@
 
 #table(
   columns: (1fr, 1fr),
-  inset: (x: 0em),
+  inset: (x: 1em),
   stroke: none,
   verb_page(aller),
   // verb_page(vouloir),
@@ -251,7 +251,7 @@
 
 #table(
   columns: (1fr, 1fr),
-  inset: (x: 0em),
+  inset: (x: 1em),
   stroke: none,
   verb_page(etre),
   verb_page(avoir),
