@@ -1,3 +1,85 @@
+#let aqua = ([aqua, -ae, #smallcaps[f]. 水],
+  [aqu-a], [aqu-ae],
+  [aqu-ae],[aqu-ārum],
+  [aqu-ae],[aqu-īs],
+  [aqu-am],[aqu-ās],
+  [aqu-ā], [aqu-īs])
+
+#let servus = ([servus, -ī, #smallcaps[m]. 奴隶],
+  [serv-us], [serv-ī],
+  [serv-ī],[serv-ōrum],
+  [serv-ō],[serv-īs],
+  [serv-um],[serv-ōs],
+  [serv-ō], [serv-īs])
+
+#let donum = ([dōnum, -ī, #smallcaps[n]. 礼物],
+  [dōn-um],[dōn-a],
+  [dōn-ī], [dōn-ōrum],
+  [dōn-ō], [dōn-īs],
+  [dōn-um],[dōn-a],
+  [dōn-ō], [dōn-īs])
+
+#let rex = ([rēx, rēgis, #smallcaps[m]. 国王],
+  [rēx],[rēg-ēs],
+  [rēg-is], [rēg-um],
+  [rēg-ī], [rēg-ibus],
+  [rēg-em],[rēg-ēs],
+  [rēg-e], [rēg-ibus])
+
+#let corpus = ([corpus, corporis, #smallcaps[n]. 身体],
+  [corpus],[corpor-a],
+  [corpor-is], [corpor-um],
+  [corpor-ī], [corpor-ibus],
+  [corpus],[corpor-a],
+  [corpor-e], [corpor-ibus])
+
+
+#let civis = ([cīvis, -is, #smallcaps[m]. 公民],
+  [cīv-is],[cīv-ēs],
+  [cīv-is],[cīv-ium],
+  [cīv-ī], [cīv-ibus],
+  [cīv-em],[cīv-ēs],
+  [cīv-e], [cīv-ibus])
+
+#let mare = ([mare, -is, #smallcaps[n]. 海],
+  [mar-e],[mar-ia],
+  [mar-is],[mar-ium],
+  [mar-ī], [mar-ibus],
+  [mar-e],[mar-ia],
+  [mar-ī], [mar-ibus])
+
+#let fructus = ([frūctus, -ūs, #smallcaps[m]. 水果],
+  [frūct-us],[frūct-ūs],
+  [frūct-ūs], [frūct-uum],
+  [frūct-uī], [frūct-ibus],
+  [frūct-um],[frūct-ūs],
+  [frūct-ū], [frūct-ibus])
+
+#let cornu = ([cornū, -ūs, #smallcaps[n]. 角],
+  [corn-ū],[corn-ua],
+  [corn-ūs], [corn-uum],
+  [corn-ū], [corn-ibus],
+  [corn-ū],[corn-ua],
+  [corn-ū], [corn-ibus])
+
+
+#let res = ([rēs, reī, #smallcaps[f]. 事物],
+  [r-ēs],[r-ēs],
+  [r-eī],[r-ērum],
+  [r-eī],[r-ēbus],
+  [r-em],[r-ēs],
+  [r-ē], [r-ēbus])
+
+
+#let dies = ([diēs, diēī, #smallcaps[n]. 日子],
+  [di-ēs],[di-ēs],
+  [di-ēī],[di-ērum],
+  [di-ēī],[di-ēbus],
+  [di-em],[di-ēs],
+  [di-ē], [di-ēbus])
+
+// global setting
+
 #import "@preview/zh-kit:0.1.0": *
 
 #set text(font: ("EB Garamond","Kaiti SC"), size: 12pt)
@@ -16,7 +98,6 @@
   flipped: true
 )
 
-// Data
 
 #let latin-ordinal(i) = {
   if i == 1{
@@ -31,6 +112,10 @@
     [Quīnta]
   }
 }
+
+#let cases = ([nom], [gen], [dat], [acc], [abl])
+
+// parsing
 
 #let gender-color(g) = {
   if g == 1 {
@@ -48,11 +133,29 @@
   context text(fill: gender-color(g.get()))[#a]
 }
 
+#let parse-end(noun) = {
+  if noun.has("text") {
+    let txt = noun.text
+    if "-" in txt {
+      let parts = txt.split("-")
+      return [#parts.at(0)#end[#parts.at(1)]]
+    }
+  }
+
+  noun
+}
+
 #let declinatio-title(i, if-i: false) = [
   #line(length:100%, stroke: gray)
   #v(-0.8em)
   Dēclīnātiō #latin-ordinal(i) #if if-i{[(I-Stirpium)]} #h(1fr) 第#zhnumber-lower(i)变格法#if if-i{[（I-词干）]} 
 ]
+
+#let meta-style(body, y-shift: 0.13em) = {
+  text(fill:gray, size: 0.8em, baseline: y-shift)[#smallcaps[#body]]
+}
+
+// cell
 
 #let chart(noun, gender, if-case: true) = {
   if if-case{
@@ -62,12 +165,14 @@
     stroke: 0pt,
     inset: (y: 0.3em),
     [#context g.update(gender)],table.cell(colspan: 2)[#text(fill: luma(100))[#noun.at(0)]],
-    [],[#text(fill:gray, size: 0.8em)[#smallcaps[singvlaris]]],[#text(fill:gray, size: 0.8em)[#smallcaps[plvralis]]],
-    [#text(fill:gray, size: 0.8em, baseline: 0.13em)[#smallcaps[nom]]],[#noun.at(1)],[#noun.at(2)],
-    [#text(fill:gray, size: 0.8em, baseline: 0.13em)[#smallcaps[gen]]],[#noun.at(3)],[#noun.at(4)],
-    [#text(fill:gray, size: 0.8em, baseline: 0.13em)[#smallcaps[dat]]],[#noun.at(5)],[#noun.at(6)],
-    [#text(fill:gray, size: 0.8em, baseline: 0.13em)[#smallcaps[acc]]],[#noun.at(7)],[#noun.at(8)],
-    [#text(fill:gray, size: 0.8em, baseline: 0.13em)[#smallcaps[abl]]],[#noun.at(9)],[#noun.at(10)],
+    [],[#meta-style(y-shift: 0em)[singvlaris]],[#meta-style(y-shift: 0em)[plvralis]],
+    ..range(15).map(i => {
+      if calc.rem(i,3) == 0 {
+        return [#meta-style(cases.at(calc.floor(i / 3)))]
+      } else {
+        return [#parse-end(noun.at(calc.floor(i / 3) * 2 + calc.rem(i,3)))]
+      }
+    })
   )
   } else{
   table(
@@ -77,100 +182,14 @@
     inset: (y: 0.3em),
     table.cell(colspan: 2)[#context g.update(gender)#text(fill: luma(100))[#noun.at(0)]],
     [#text(fill:gray, size: 0.8em)[#smallcaps[singvlaris]]],[#text(fill:gray, size: 0.8em)[#smallcaps[plvralis]]],
-    [#noun.at(1)],[#noun.at(2)],
-    [#noun.at(3)],[#noun.at(4)],
-    [#noun.at(5)],[#noun.at(6)],
-    [#noun.at(7)],[#noun.at(8)],
-    [#noun.at(9)],[#noun.at(10)],
+    ..range(1, 11).map(i => [#parse-end(noun.at(i))])
   )
   }
 }
 
 
-// ===================================== //
 
-#let aqua = ([aqua, -ae, #smallcaps[f]. 水],
-  [aqu#end[a]], [aqu#end[ae]],
-  [aqu#end[ae]],[aqu#end[ārum]],
-  [aqu#end[ae]],[aqu#end[īs]],
-  [aqu#end[am]],[aqu#end[ās]],
-  [aqu#end[ā]], [aqu#end[īs]])
-
-#let servus = ([servus, -ī, #smallcaps[m]. 奴隶],
-  [serv#end[us]], [serv#end[ī]],
-  [serv#end[ī]],[serv#end[ōrum]],
-  [serv#end[ō]],[serv#end[īs]],
-  [serv#end[um]],[serv#end[ōs]],
-  [serv#end[ō]], [serv#end[īs]])
-
-#let donum = ([dōnum, -ī, #smallcaps[n]. 礼物],
-  [dōn#end[um]],[dōn#end[a]],
-  [dōn#end[ī]], [dōn#end[ōrum]],
-  [dōn#end[ō]], [dōn#end[īs]],
-  [dōn#end[um]],[dōn#end[a]],
-  [dōn#end[ō]], [dōn#end[īs]])
-
-#let rex = ([rēx, rēgis, #smallcaps[m]. 国王],
-  [rēx],[rēg#end[ēs]],
-  [rēg#end[is]], [rēg#end[um]],
-  [rēg#end[ī]], [rēg#end[ibus]],
-  [rēg#end[em]],[rēg#end[ēs]],
-  [rēg#end[e]], [rēg#end[ibus]])
-
-#let corpus = ([corpus, corporis, #smallcaps[n]. 身体],
-  [corpus],[corpor#end[a]],
-  [corpor#end[is]], [corpor#end[um]],
-  [corpor#end[ī]], [corpor#end[ibus]],
-  [corpus],[corpor#end[a]],
-  [corpor#end[e]], [corpor#end[ibus]])
-
-
-#let civis = ([cīvis, -is, #smallcaps[m]. 公民],
-  [cīv#end[is]],[cīv#end[ēs]],
-  [cīv#end[is]],[cīv#end[ium]],
-  [cīv#end[ī]], [cīv#end[ibus]],
-  [cīv#end[em]],[cīv#end[ēs]],
-  [cīv#end[e]], [cīv#end[ibus]])
-
-#let mare = ([mare, -is, #smallcaps[n]. 海],
-  [mar#end[e]],[mar#end[ia]],
-  [mar#end[is]],[mar#end[ium]],
-  [mar#end[ī]], [mar#end[ibus]],
-  [mar#end[e]],[mar#end[ia]],
-  [mar#end[ī]], [mar#end[ibus]])
-
-#let fructus = ([frūctus, -ūs, #smallcaps[m]. 水果],
-  [frūct#end[us]],[frūct#end[ūs]],
-  [frūct#end[ūs]], [frūct#end[uum]],
-  [frūct#end[uī]], [frūct#end[ibus]],
-  [frūct#end[um]],[frūct#end[ūs]],
-  [frūct#end[ū]], [frūct#end[ibus]])
-
-#let cornu = ([cornū, -ūs, #smallcaps[n]. 角],
-  [corn#end[ū]],[corn#end[ua]],
-  [corn#end[ūs]], [corn#end[uum]],
-  [corn#end[ū]], [corn#end[ibus]],
-  [corn#end[ū]],[corn#end[ua]],
-  [corn#end[ū]], [corn#end[ibus]])
-
-
-#let res = ([rēs, reī, #smallcaps[f]. 事物],
-  [r#end[ēs]],[r#end[ēs]],
-  [r#end[eī]],[r#end[ērum]],
-  [r#end[eī]],[r#end[ēbus]],
-  [r#end[em]],[r#end[ēs]],
-  [r#end[ē]], [r#end[ēbus]])
-
-
-#let dies = ([diēs, diēī, #smallcaps[n]. 日子],
-  [di#end[ēs]],[di#end[ēs]],
-  [di#end[ēī]],[di#end[ērum]],
-  [di#end[ēī]],[di#end[ēbus]],
-  [di#end[em]],[di#end[ēs]],
-  [di#end[ē]], [di#end[ēbus]])
-
-
-// ===================================== //
+// rendering
 
 
 #table(
