@@ -106,7 +106,7 @@
     ps:   ("eu-s", "eu-s", "eu-t", "eû-mes", "eû-tes", "eu-rent"),
     fut:  ("aur-ai", "aur-as", "aur-a", "aur-ons", "aur-ez", "aur-ont"),
   ),
-  cond: ("aur-ais", "aur-ais", "aur-ait", "aur-ions", "aur-iez", "aur-eraient"),
+  cond: ("aur-ais", "aur-ais", "aur-ait", "aur-ions", "aur-iez", "aur-aient"),
   subj-pres: ("ai-e", "ai-es", "ai-t", "ay-ons", "ay-ez", "ai-ent"),
   subj-impf: ("eu-sse", "eu-sses", "eû-t", "eu-ssions", "eu-ssiez", "eu-ssent"),
   imp:  ("ai-e", "ay-ons", "ay-ez"),
