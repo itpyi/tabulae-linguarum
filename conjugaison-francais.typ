@@ -149,12 +149,21 @@
 #set text(font: ("EB Garamond", "Kaiti SC"), size: 14pt)
 
 // --- 辅助函数 ---
-#let color_end = rgb("#D81B60") // 红色强调变位后缀
+#let color-list = (
+  infinitif: green,
+  participle: orange,
+  indicatif: red,
+  conditionnel: purple,
+  subjonctif: blue,
+  imperatif: teal
+)
 
-#let parse(txt) = {
+// #let mode-color = state("mc", color-list.infinitif)
+
+#let parse(txt, mode-color) = {
   if "-" in txt {
     let p = txt.split("-")
-    return [#p.at(0)#text(fill: color_end)[#p.at(1)]]
+    return [#p.at(0)#text(fill: mode-color)[#p.at(1)]]
   }
   txt
 }
@@ -186,33 +195,33 @@
       inset: (y: 0.15em),
       row-gutter: 0.5em,
       table.hline(start: 2, stroke: luma(150)),
-      table.cell(colspan: 2, align: left+top)[#h(-0.5em)#text(size: 1.2em, baseline: -0.4em)[#verb.info]],[#mode-style[infinitive]], [#mode-style[participe]\ #temp-style[présent]], [#mode-style[p.] \ #temp-style[passé]],
+      table.cell(colspan: 2, align: left+top)[#h(-0.5em)#text(size: 1.2em, baseline: -0.4em)[#verb.info]],[#mode-style[infinitif]], [#mode-style[participe]\ #temp-style[présent]], [#mode-style[p.] \ #temp-style[passé]],
       table.cell(colspan: 2, align: left)[#text(size: 0.8em)[#verb.note]],
-      [#parse(verb.infinitive)],
-      [#parse(verb.par-pres)],
-      [#parse(verb.par-passe)],
+      [#parse(verb.infinitive, color-list.infinitif)],
+      [#parse(verb.par-pres, color-list.participle)],
+      [#parse(verb.par-passe, color-list.participle)],
       [], table.cell(colspan: 4, align: left+ bottom)[],
       table.hline(start: 0, stroke: luma(150)),
       [], [#mode-style[indicatif] #temp-style[présent]], [#mode-style[ind.]\ #temp-style[imparfait]], [#mode-style[ind.]\ #temp-style[passé simple]], [#mode-style[ind.]\ #temp-style[futur simple]],
       ..range(6).map(i => (
         text(fill: luma(150), size: persons-font-size)[#persons.at(i)],
-        parse(verb.indicatif.pres.at(i)),
-        parse(verb.indicatif.impf.at(i)),
-        parse(verb.indicatif.ps.at(i)),
-        parse(verb.indicatif.fut.at(i)),
+        parse(verb.indicatif.pres.at(i), color-list.indicatif),
+        parse(verb.indicatif.impf.at(i), color-list.indicatif),
+        parse(verb.indicatif.ps.at(i), color-list.indicatif),
+        parse(verb.indicatif.fut.at(i), color-list.indicatif),
       )).flatten(),
       [], table.cell(colspan: 4, align: left+ bottom)[],
       table.hline(start: 0, stroke: luma(150)),
       [], [#mode-style[conditionnel]\ #temp-style[présent]], [#mode-style[subjonctif]\ #temp-style[présent]], [#mode-style[subj.]\ #temp-style[imparfait]], [#mode-style[impératif]\ #temp-style[présent]],
       ..range(6).map(i => (
         text(fill: luma(150), size: persons-font-size)[#(if i < 6 {persons.at(i)})],
-        parse(verb.cond.at(i)),
-        parse(verb.subj-pres.at(i)),
-        parse(verb.subj-impf.at(i)),
+        parse(verb.cond.at(i), color-list.conditionnel),
+        parse(verb.subj-pres.at(i), color-list.subjonctif),
+        parse(verb.subj-impf.at(i), color-list.subjonctif),
         // 命令式特殊处理（只有三个人称）
-        if i == 1 { [ #parse(verb.imp.at(0)) ] }
-        else if i == 3 { [ #parse(verb.imp.at(1)) ] }
-        else if i == 4 { [ #parse(verb.imp.at(2)) ] }
+        if i == 1 { [ #parse(verb.imp.at(0), color-list.imperatif) ] }
+        else if i == 3 { [ #parse(verb.imp.at(1), color-list.imperatif) ] }
+        else if i == 4 { [ #parse(verb.imp.at(2), color-list.imperatif) ] }
         else { [] }
       )).flatten()
     )
